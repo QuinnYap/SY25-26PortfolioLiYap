@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name = "author" content="YAP, Quinn Mikayela C.">
+        <meta name = "description" content = "3Q 2nd Graded">
+        <meta name = "keywords" content = "3Q, 2nd Graded, Projects, Web Development">
+        <meta name = "author" content="YAP, Quinn Mikayela C.">
+        <title>Q3 2nd Graded</title>
+        <link rel="stylesheet" href="../../stylesheets/YapPortfolioStyles.css">
+        <link rel="icon" href="../../asset/BadgeOriginalDefinition.png">
+    </head>
+
+    <style>
+        fieldset{
+            background-color: var(--little-boy-blue);
+            color:var(--platinum);
+        }
+        legend{
+            background-color: var(--thistle);
+            color:var(--liberty);
+        }
+        div.form{
+            background-color:var(--bleu-de-france);
+            width:50vw;
+            margin:10px 25vw;
+            border-radius:10px;
+            border:10px;
+            padding:10px;
+        }
+        div.form h1{
+            color:var(--platinum);
+        }
+    </style>
+
+    <body>
+        <header>
+            <div>
+                <img style="float:left;" src="../../asset/BadgeOriginalDefinition.png" alt = "Japanese attorney's badge" title = "Quinn's Attorney's Badge">
+                <h1>ᵕ̈CS3 Q3 2nd Graded Exercise☕︎</h1>
+                <p style="color:var(--platinum); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">by YAP, Quinn Mikayela C. of 9-Lithium</p>
+            </div>
+        </header>
+        <nav>
+            <a href="../../index.html">Home</a>
+        </nav>
+        
+        <div class="form">
+        <h1>Club Sign-Up Form :3</h1>
+        <form id="club" method="post" action="submit">
+            <fieldset>
+                <legend>Credentials</legend>
+                <label>Student ID: 
+                    <input type="number" name="studentid" id="studentid" required />
+                </label><br><br>
+                <label>Full Name: 
+                    <input type="text" name="fullname" id="fullname" placeholder="LASTNAME, Firstname M.I." required />
+                </label><br><br>
+                <label>Birthday: 
+                    <input type="date" name="bday" id="bday" required />
+                </label><br><br>
+                <label>Email address: 
+                    <input type="email" name="emailadd" id="emailadd" placeholder="student@school.com" required />
+                </label><br><br>
+            </fieldset>
+            <fieldset>
+                <legend>Information</legend>
+                <label>Mobile phone: 
+                    <input type="text" name="mobphone" id="mobphone" required />
+                </label><br><br>
+                <label>Grade Level: 
+                    <select name="grlevel" id="grlevel">
+                        <option value="gr1">Grade 1</option>
+                        <option value="gr2">Grade 2</option>
+                        <option value="gr3">Grade 3</option>
+                        <option value="gr4">Grade 4</option>
+                        <option value="gr5">Grade 5</option>
+                        <option value="gr6">Grade 6</option>
+                        <option value="gr7">Grade 7</option>
+                        <option value="gr8">Grade 8</option>
+                        <option value="gr9">Grade 9</option>
+                        <option value="gr10">Grade 10</option>
+                        <option value="gr11">Grade 11</option>
+                        <option value="gr12">Grade 12</option>
+                    </select>
+                </label><br><br>
+                <label>Intern/Extern: 
+                    <input type="radio" name="intext" value="int" /> Intern
+                    <input type="radio" name="intext" value="ext" /> Extern
+                </label><br><br>
+                <label>Preferred Organization: 
+                    <select name="grlevel" id="grlevel">
+                        <option value="artcl">Arts & Crafts</option>
+                        <option value="dancecl">Dance</option>
+                        <option value="singcl">Choir</option>
+                        <option value="musiccl">Music</option>
+                        <option value="theatrecl">Theatre</option>
+                        <option value="ultfrisbeecl">Ultimate Frisbee</option>
+                    </select>
+                </label><br><br>
+                <label>Why do you want to join?
+                    <textarea name="why" id="why">
+
+                    </textarea>
+                </label><br><br>
+            </fieldset>
+            <fieldset>
+                <legend>Action Buttons</legend>
+                    <button type="submit">Submit</button>
+                    <input type="reset" value=" Clear "/>
+            </fieldset>
+        </form>
+    </div>
+    </body>
+
+    <footer>
+        <p><span>&copy; 2025-2026 Quinn Mikayela Yap | PSHS-MC</span></p>
+    </footer>
