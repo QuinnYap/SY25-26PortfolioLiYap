@@ -10,6 +10,7 @@
         <title>Q3 2nd Graded</title>
         <link rel="stylesheet" href="../../stylesheets/YapPortfolioStyles.css">
         <link rel="icon" href="../../asset/BadgeOriginalDefinition.png">
+        <script src="./q32gliyap.js"></script>
     </head>
 
     <style>
@@ -52,22 +53,22 @@
             <fieldset>
                 <legend>Credentials</legend>
                 <label>Student ID: 
-                    <input type="number" name="studentid" id="studentid" required />
+                    <input onfocus="changeColor(this)" onblur="resetColor(this)" type="number" name="studentid" id="studentid" required />
                 </label><br><br>
                 <label>Full Name: 
-                    <input type="text" name="fullname" id="fullname" placeholder="LASTNAME, Firstname M.I." required />
+                    <input onfocus="changeColor(this)" onblur="resetColor(this)" type="text" name="fullname" id="fullname" placeholder="LASTNAME, Firstname M.I." required />
                 </label><br><br>
                 <label>Birthday: 
-                    <input type="date" name="bday" id="bday" required />
+                    <input onfocus="changeColor(this)" onblur="resetColor(this)" type="date" name="bday" id="bday" required />
                 </label><br><br>
                 <label>Email address: 
-                    <input type="email" name="emailadd" id="emailadd" placeholder="student@school.com" required />
+                    <input onfocus="changeColor(this)" onblur="resetColor(this)" type="email" name="emailadd" id="emailadd" placeholder="student@school.com" required />
                 </label><br><br>
             </fieldset>
             <fieldset>
                 <legend>Information</legend>
                 <label>Mobile phone: 
-                    <input type="text" name="mobphone" id="mobphone" required />
+                    <input onfocus="changeColor(this)" onblur="resetColor(this)" type="text" name="mobphone" id="mobphone" required />
                 </label><br><br>
                 <label>Grade Level: 
                     <select name="grlevel" id="grlevel">
@@ -86,8 +87,8 @@
                     </select>
                 </label><br><br>
                 <label>Intern/Extern: 
-                    <input type="radio" name="intext" value="int" /> Intern
-                    <input type="radio" name="intext" value="ext" /> Extern
+                    <input onfocus="changeColor(this)" onblur="resetColor(this)" type="radio" name="intext" value="int" /> Intern
+                    <input onfocus="changeColor(this)" onblur="resetColor(this)" type="radio" name="intext" value="ext" /> Extern
                 </label><br><br>
                 <label>Preferred Organization: 
                     <select name="grlevel" id="grlevel">
