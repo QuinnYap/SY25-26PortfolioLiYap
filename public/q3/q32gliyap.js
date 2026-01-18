@@ -2,7 +2,7 @@ const form = document.getElementById("club");
 
 //localstorage saving
 
-form.addEventListener("reset", function(e){
+form.addEventListener("reset", function(e){ 
     if(!confirm("Are you sure you want to clear your data?")){
         e.preventDefault();
     }
