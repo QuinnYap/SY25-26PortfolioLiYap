@@ -29,13 +29,46 @@
             <a href="Q3_2&3GLithiumYap.html">Back to Sign-Up</a>
         </nav>
         <section>
-            <p>Select your club</p>
-            <p id="signupnum"></p>
+            <div>
+                <label>
+                    Select your club: 
+                    <select id="clubType">
+                        <option value="selectIt">--select a club--</option>
+                        <option value="all">All</option>
+                        <option value="artcl">Arts & Crafts</option>
+                        <option value="dancecl">Dance</option>
+                        <option value="singcl">Choir</option>
+                        <option value="musiccl">Music</option>
+                        <option value="theatrecl">Theatre</option>
+                        <option value="ultfrisbeecl">Ultimate Frisbee</option>
+                    </select>
+                </label>
+                <p id="totalSignUps">Total Sign Ups: </p>
+            </div>
+            <div>
+                <table id="signees"> </table>
+            </div>
         </section>
     </body>
 
     <script>
-
+        let signUps = localStorage.getItem("signUpPeoples")
+        if(!signUps){ LIST = "No sign ups";}
+        else{
+            LIST = JSON.parse(signUps)
+            rowString = "<tr><th>Student ID</th><th>Club</th><th>Full Name</th><th>Grade</th><th>Email</th><th>Mobile no.</th><th>Why Join?</th></tr>";
+            for(let ppl in LIST){
+                rowString += "<tr>";
+                rowString += "<td>" + key + "</td>";
+                rowString += "<td>" + LIST[key].clubSelect + "</td>";
+                rowString += "<td>" + LIST[key].fullname + "</td>";
+                rowString += "<td>" + LIST[key].grlevel + "</td>";
+                rowString += "<td>" + LIST[key].emailadd + "</td></tr>";
+                rowString += "<td>" + LIST[key].mobphone + "</td></tr>";
+                rowString += "<td>" + LIST[key].why + "</td></tr>";
+            }
+        }
+        signees.innerHTML = rowString;
     </script>
 
     <footer>

@@ -1,6 +1,6 @@
 let signUps = localStorage.getItem("signUpPeoples")
-if (!signUps) { list = {} } 
-else list = JSON.parse(signUps)
+if (!signUps) { LIST = {} } 
+else LIST = JSON.parse(signUps)
 
 const form = document.getElementById("club");
 
@@ -10,15 +10,15 @@ form.addEventListener("submit", function (e){
         const data = new FormData(form);
         const infoObj = Object.fromEntries(data.entries());
 
-        list[infoObj.studentid] = {};
+        LIST[infoObj.studentid] = {};
         for(let info in obj){
             if(info != "studentid"){
-                list[infoObj.studentid][info] = infoObj[info];
+                LIST[infoObj.studentid][info] = infoObj[info];
             }
         }
 
-        signUps = JSON.stringify(list);
-        localStorage.setItem("list", signUps);
+        signUps = JSON.stringify(LIST);
+        localStorage.setItem("signUpPeoples", signUps);
         form.submit();
     }
 });
@@ -29,7 +29,7 @@ form.addEventListener("reset", function (e){
     }
 });
 
-function showDesc(){
+function showDesc(){ //shows the description of a club when the user selects it
     let club = document.getElementById("clubSelect").value;
     let clubDesc;
     switch(club){
