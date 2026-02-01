@@ -59,13 +59,13 @@
             rowString = "<tr><th>Student ID</th><th>Club</th><th>Full Name</th><th>Grade</th><th>Email</th><th>Mobile no.</th><th>Why Join?</th></tr>";
             for(let ppl in LIST){
                 rowString += "<tr>";
-                rowString += "<td>" + key + "</td>";
-                rowString += "<td>" + LIST[key].clubSelect + "</td>";
-                rowString += "<td>" + LIST[key].fullname + "</td>";
-                rowString += "<td>" + LIST[key].grlevel + "</td>";
-                rowString += "<td>" + LIST[key].emailadd + "</td></tr>";
-                rowString += "<td>" + LIST[key].mobphone + "</td></tr>";
-                rowString += "<td>" + LIST[key].why + "</td></tr>";
+                rowString += "<td>" + ppl + "</td>";
+                rowString += "<td>" + LIST[ppl].clubSelect + "</td>";
+                rowString += "<td>" + LIST[ppl].fullname + "</td>";
+                rowString += "<td>" + LIST[ppl].grlevel + "</td>";
+                rowString += "<td>" + LIST[ppl].emailadd + "</td></tr>";
+                rowString += "<td>" + LIST[ppl].mobphone + "</td></tr>";
+                rowString += "<td>" + LIST[ppl].why + "</td></tr>";
             }
         }
         signees.innerHTML = rowString;
