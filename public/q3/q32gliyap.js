@@ -1,7 +1,6 @@
-const SIGNS = "signUpPeoples"
-let signUps = localStorage.getItem(SIGNS)
-if (!signUps) { SIGNS = {} } 
-else { SIGNS = JSON.parse(signUps) }
+let signUps = localStorage.getItem("signUpPpl")
+if (!signUps) { signErs = {} } 
+else { signErs = JSON.parse(signUps) }
 
 const form = document.getElementById("club");
 
@@ -11,15 +10,15 @@ form.addEventListener("submit", function (e){
         const data = new FormData(form);
         const infoObj = Object.fromEntries(data.entries());
 
-        SIGNS[infoObj.studentid] = {};
+        signErs[infoObj.studentid] = {};
         for(let info in obj){
             if(info != "studentid"){
-                SIGNS[infoObj.studentid][info] = infoObj[info];
+                sign[infoObj.studentid][info] = infoObj[info];
             }
         }
 
-        signUps = JSON.stringify(SIGNS);
-        localStorage.setItem("signUpPeoples", signUps);
+        signUps = JSON.stringify("signUpPpl");
+        localStorage.setItem("signUpPpl", signUps);
         form.submit();
     }
 });
@@ -66,4 +65,3 @@ function changeColor(dInput){
 function resetColor(dInput){
     dInput.style.backgroundColor = "white";
 }
-

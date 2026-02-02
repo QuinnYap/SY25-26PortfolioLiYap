@@ -43,6 +43,7 @@
                         <option value="ultfrisbeecl">Ultimate Frisbee</option>
                     </select>
                 </label>
+                <button onclick="getSignUps()">Get sign-ups</button>
                 <p id="totalSignUps">Total Sign Ups: </p>
             </div>
             <div>
@@ -52,20 +53,21 @@
     </body>
 
     <script>
-        let signUps = localStorage.getItem("signUpPeoples")
-        if(!signUps){ LIST = "No sign ups";}
-        else{
-            LIST = JSON.parse(signUps)
+        let signUps = localStorage.getItem("signUpPpl")
+        if (!signUps) { signErs = "No Sign-Ups Found" } 
+        else {
+            
+            signErs = JSON.parse(signUps) 
             rowString = "<tr><th>Student ID</th><th>Club</th><th>Full Name</th><th>Grade</th><th>Email</th><th>Mobile no.</th><th>Why Join?</th></tr>";
-            for(let ppl in LIST){
+            for(let ppl in signErs){
                 rowString += "<tr>";
                 rowString += "<td>" + ppl + "</td>";
-                rowString += "<td>" + LIST[ppl].clubSelect + "</td>";
-                rowString += "<td>" + LIST[ppl].fullname + "</td>";
-                rowString += "<td>" + LIST[ppl].grlevel + "</td>";
-                rowString += "<td>" + LIST[ppl].emailadd + "</td></tr>";
-                rowString += "<td>" + LIST[ppl].mobphone + "</td></tr>";
-                rowString += "<td>" + LIST[ppl].why + "</td></tr>";
+                rowString += "<td>" + signErs[ppl].clubSelect + "</td>";
+                rowString += "<td>" + signErs[ppl].fullname + "</td>";
+                rowString += "<td>" + signErs[ppl].grlevel + "</td>";
+                rowString += "<td>" + signErs[ppl].emailadd + "</td>";
+                rowString += "<td>" + signErs[ppl].mobphone + "</td>";
+                rowString += "<td>" + signErs[ppl].why + "</td></tr>";
             }
         }
         signees.innerHTML = rowString;
