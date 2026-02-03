@@ -1,6 +1,14 @@
-let signUps = localStorage.getItem("signUpPpl")
-if (!signUps) { signErs = {} } 
-else { signErs = JSON.parse(signUps) }
+const LIST = "signUps";
+function checkNotes(){
+    const people = localStorage.getItem(LIST);
+    if(people){
+        return JSON.parse(people);
+    }
+    else{
+        return {};
+    }
+}
+listSignUps = checkNotes();
 
 const form = document.getElementById("club");
 
@@ -8,17 +16,17 @@ form.addEventListener("submit", function (e){
     e.preventDefault();
     if(confirm("You want to save your work?")){
         const data = new FormData(form);
-        const infoObj = Object.fromEntries(data.entries());
 
-        signErs[infoObj.studentid] = {};
-        for(let info in obj){
-            if(info != "studentid"){
-                sign[infoObj.studentid][info] = infoObj[info];
+        const obj=Object.fromEntries(data.entries());
+        listSignUps[obj.studentid] = {};
+        for(let key in obj){
+            if(key != "studentid"){
+                listSignUps[obj.studentid][key] = obj[key];
             }
         }
 
-        signUps = JSON.stringify("signUpPpl");
-        localStorage.setItem("signUpPpl", signUps);
+        console.log(listSignUps);
+        stringList = localStorage.setItem(LIST, JSON.stringify(listSignUps));
         form.submit();
     }
 });
@@ -33,28 +41,28 @@ function showDesc(){ //shows the description of a club when the user selects it
     let club = document.getElementById("clubSelect").value;
     let clubDesc;
     switch(club){
-        case "artcl":
+        case "Art Club":
             clubDesc = "The arts & crafts club is a place where you can let your creativity flow.";
             break;
-        case "dancecl":
+        case "Dance Club":
             clubDesc = "The dance club is a place where you can show off your dance skills.";
             break;
-        case "singcl":
+        case "Choir Club":
             clubDesc = "The choir club is a place where you can realize your true singing talent.";
             break;
-        case "musiccl":
+        case "Music Club":
             clubDesc = "The music club is a place where you can learn how to use instruments, or show people your talent in music.";
             break;
-        case "theatrecl":
+        case "Theatre Club":
             clubDesc = "The theatre club is a place where you can reveal your true dramatic side.";
             break;
-        case "ultfrisbeecl":
+        case "Ultimate Frisbee Club":
             clubDesc = "The ultimate frisbee club is a place where you can exercise your frisbee skill or participate in tournaments.";
             break;
         default:
             clubDesc = "Club Description Here"
     }
-    document.getElementById("clubText").innerHTML = "Club Description: " + clubDesc
+    clubText.innerHTML = "Club Description: " + clubDesc
   
 }
 
