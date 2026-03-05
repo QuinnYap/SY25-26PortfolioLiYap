@@ -14,7 +14,38 @@
     </head>
 
     <style>
-
+        :root{
+            --platinum:#EEE2DF;
+            --thistle:#DEC1DB;
+            --liberty:#5B61B2;
+            --bleu-de-france:#2F80E4;
+            --little-boy-blue:#6DA0E1;
+        }
+        table{
+            margin:auto;
+        }
+        div#table{
+            width:fit-content;
+            height:fit-content;
+            background-color: var(--little-boy-blue);
+            padding:10px;
+            border-radius: 10px;
+            margin:auto;
+        }
+        div#dropdown{
+            padding:10px;
+            margin:auto;
+            text-align:center;
+            color:#5B61B2;
+        }
+        th, td{
+            border:2px solid var(--liberty);
+            color:var(--platinum);
+            background-color: var(--liberty);
+        }
+        select{
+            background-color:#6DA0E1;
+        }
     </style>
 
     <body>
@@ -28,49 +59,84 @@
         <nav id="gradedexers">
             <a href="Q3_2&3GLithiumYap.html">Back to Sign-Up</a>
         </nav>
+
         <section>
-            <div>
+            <div id="dropdown">
+                <p>
                 <label>
-                    Select your club: 
-                    <select id="clubType">
-                        <option value="selectIt">--select a club--</option>
-                        <option value="all">All</option>
-                        <option value="artcl">Arts & Crafts</option>
-                        <option value="dancecl">Dance</option>
-                        <option value="singcl">Choir</option>
-                        <option value="musiccl">Music</option>
-                        <option value="theatrecl">Theatre</option>
-                        <option value="ultfrisbeecl">Ultimate Frisbee</option>
+                    Select Your Club:
+                    <select name="seeclub" id="seeclub" onchange="viewSignUps()">
+                        <option value="Select">--select a club--</option>
+                        <option value="All">All</option>
+                        <option value="Art Club">Arts & Crafts</option>
+                        <option value="Dance Club">Dance</option>
+                        <option value="Singing Club">Choir</option>
+                        <option value="Music Club">Music</option>
+                        <option value="Theatre Club">Theatre</option>
+                        <option value="Ultimate Frisbee Club">Ultimate Frisbee</option>
                     </select>
                 </label>
-                <button onclick="getSignUps()">Get sign-ups</button>
-                <p id="totalSignUps">Total Sign Ups: </p>
+                </p>
+                <p id="totalsignups"> </p>
             </div>
-            <div>
-                <table id="signees"> </table>
+            <div id="table">
+                <table id="listees"></table>
             </div>
         </section>
     </body>
 
     <script>
-        let signUps = localStorage.getItem("signUpPpl")
-        if (!signUps) { signErs = "No Sign-Ups Found" } 
-        else {
-            
-            signErs = JSON.parse(signUps) 
-            rowString = "<tr><th>Student ID</th><th>Club</th><th>Full Name</th><th>Grade</th><th>Email</th><th>Mobile no.</th><th>Why Join?</th></tr>";
-            for(let ppl in signErs){
-                rowString += "<tr>";
-                rowString += "<td>" + ppl + "</td>";
-                rowString += "<td>" + signErs[ppl].clubSelect + "</td>";
-                rowString += "<td>" + signErs[ppl].fullname + "</td>";
-                rowString += "<td>" + signErs[ppl].grlevel + "</td>";
-                rowString += "<td>" + signErs[ppl].emailadd + "</td>";
-                rowString += "<td>" + signErs[ppl].mobphone + "</td>";
-                rowString += "<td>" + signErs[ppl].why + "</td></tr>";
+        const LIST = "signUps";
+        let listString = localStorage.getItem(LIST);
+        let hasSignUps = false
+        if(!listString){
+            listSignUps = "No sign ups found"
+        }
+        else{
+            hasSignUps= true
+            }
+
+        function viewSignUps(){
+            let rowString = "<tr><th>ID</th><th>Name</th><th>Email</th><th>Grade Level</th><th>Intern/Extern</th><th>Club</th></tr>";
+            let signCount = 0;
+            const clubChose = seeclub.value;
+            console.log(listSignUps)
+            for (let key in listSignUps) {
+                if(listSignUps[key].clubSelect == clubChose){
+                        rowString += "<tr>";
+                        rowString += "<td>" + key + "</td>";
+                        rowString += "<td>" + listSignUps[key].fullname + "</td>";
+                        rowString += "<td>" + listSignUps[key].emailadd + "</td>";
+                        rowString += "<td>" + listSignUps[key].grlevel + "</td>";
+                        rowString += "<td>" + listSignUps[key].intext + "</td>";
+                        rowString += "<td>" + listSignUps[key].clubSelect + "</td></tr>";
+                        signCount += 1;
+                        }
+                else if(clubChose == "All"){
+                        rowString += "<tr>";
+                        rowString += "<td>" + key + "</td>";
+                        rowString += "<td>" + listSignUps[key].fullname + "</td>";
+                        rowString += "<td>" + listSignUps[key].emailadd + "</td>";
+                        rowString += "<td>" + listSignUps[key].grlevel + "</td>";
+                        rowString += "<td>" + listSignUps[key].intext + "</td>";
+                        rowString += "<td>" + listSignUps[key].clubSelect + "</td></tr>";
+                        signCount += 1;
+                    }
+            }
+            if(signCount == 0){
+                listees.innerHTML = "No Sign Ups for This Club"
+            }
+            else{
+                listees.innerHTML = rowString;
+                totalsignups.innerHTML = "Total sign ups: " + signCount;
             }
         }
-        signees.innerHTML = rowString;
+
+        if(hasSignUps){
+            listSignUps = JSON.parse(listString) // converts string into the correct data type in this case object
+            chosenClub();
+        }
+
     </script>
 
     <footer>
