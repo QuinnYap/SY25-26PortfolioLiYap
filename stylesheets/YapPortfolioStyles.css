@@ -17,19 +17,33 @@ header{
 header img h1{
     display:inline-block;
 }
+
 nav{
     background-color:var(--thistle);
     padding:10px;
     display:flex;
+}
+
+nav#indexhtml{
+    display:grid;
+    grid-template-columns: auto auto auto auto auto auto;
+}
+
+nav#gradedexers{
     flex-direction:row;
     justify-content:space-around;
 }
+
 nav a{
     background-color:var(--platinum);
     width:fit-content;
-    border:3px solid var(--platinum);
+    height:3rem;
+    margin:10px;
     border-radius:10px;
     padding:10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 a:link{
     color:var(--liberty);
