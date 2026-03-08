@@ -13,24 +13,140 @@
     </head>
 
     <style>
-    
+        div.form{
+            background-color:var(--little-boy-blue);
+            width:30vw;
+            margin:auto;
+            border-radius:10px;
+            border:5px solid var(--liberty);
+            padding:20px;
+        }
+        div.form h1{
+            color:var(--platinum);
+            text-align:center;
+        }
+        article#q41g{
+            padding:10px;
+        }
+        form#movie p{
+            color:var(--platinum);
+        }
+        input{
+            width:100%;
+        }
+        form#movie button{
+            background-color:var(--liberty);
+            color:var(--platinum);
+            width:100%;
+            height:40px;
+        }
+        div#stars{
+            display:flex;
+            flex-direction:row;
+            justify-content:center;
+        }
+        input[type="radio"]{
+            appearance:none;
+            width:1px;
+        }
+        /* input[type="radio"]:checked + label{
+            color:gold;
+        } */
+        label{
+            font-size:3rem;
+        }
+        .star:has(input:checked),
+        .star:has(~ .star input:checked){
+            color: gold;
+        }
     </style>
 
     <body>
         <header>
             <div>
                 <img style="float:left;" src="../../asset/BadgeOriginalDefinition.png" alt = "Japanese attorney's badge" title = "Quinn's Attorney's Badge">
-                <h1>ᵕ̈CS3 Q4 1st Graded Exercise☕︎</h1>
+                <h1>ᵕ̈CS3 Q4 1st Graded Exercise☕</h1>
                 <p style="color:var(--platinum); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">by YAP, Quinn Mikayela C. of 9-Lithium</p>
             </div>
         </header>
         <nav id="gradedexers">
             <a href="../../index.html">Home</a>
         </nav>
-        
-    <script src="./q32gliyap.js"></script>
+    <article id="q41g">
+        <div class="form">
+            <h1>Add a Movie</h1>
+            <hr>
+            <form id="movie" method="get">
+                <p>Title:</p>
+                    <input type="text" name="movtitle" id="movtitle" required />
+                <p>Year:</p>
+                    <input type="number" name="movyear" id="movyear" required>
+                <p>Genre:</p>
+                    <select name="genre" id="genre">
+                        <option value="Action">Action</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Horror">Horror</option>
+                    </select>
+                <p>Rating:</p>
+                    <div id="stars">
+                        <label class="star" for="star1">
+                        <input type="radio" name="movieStars" value="1" id="star1" class="stah">★</label>
+                        
+                        <label class="star" for="star2">
+                        <input type="radio" name="movieStars" value="2" id="star2" class="stah">★</label>
+                        
+                        <label class="star" for="star3">
+                        <input type="radio" name="movieStars" value="3" id="star3" class="stah">★</label>
+                        
+                        <label class="star" for="star4">
+                        <input type="radio" name="movieStars" value="4" id="star4" class="stah">★</label>
+                        
+                        <label class="star" for="star5">
+                        <input type="radio" name="movieStars" value="5" id="star5" class="stah">★</label>
+                    </div>
+                <br><br>
+                <button type="submit">Add Movie</button>
+            </form>
+            <hr>
+            <h1>Movie List</h1>
+            <ul id="movielist"></ul>
+        </div>
+    </article>
+
+    <script>
+        movList = JSON.parse(localStorage.getItem("allMovies")) || [];
+        displayMovs(movList);
+
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function(event){
+            event.preventDefault();
+
+            if(confirm("Do you want to add this movie?")){
+                movList.push({
+                    title: movtitle.value,
+                    year: movyear.value,
+                    genre: genre.value,
+                    rating: movieStars.value
+                });
+
+                localStorage.setItem("allMovies", JSON.stringify(movList));
+                displayMovs(movList);
+            }
+        });
+
+        function displayMovs(listLaMovs){
+            
+        }
+
+    </script>
     </body>
 
     <footer>
+        <p><b>References:</b></p>
+        <p>Modern CSS Star Rating component. (2026, February 5). https://freefrontend.com/code/modern-css-star-rating-component-2026-02-05/</p>
+        <p>Yap, Q.M. (2026). Q3 2nd and 3rd Graded. Philippine Science High School.</p>
         <p><span>&copy; 2025-2026 Quinn Mikayela Yap | PSHS-MC</span></p>
     </footer>

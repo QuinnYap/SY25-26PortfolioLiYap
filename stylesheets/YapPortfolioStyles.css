@@ -66,4 +66,5 @@ footer{
     background-color:var(--liberty);
     color:var(--thistle);
     text-align:center;
+    padding:10px;
 }
