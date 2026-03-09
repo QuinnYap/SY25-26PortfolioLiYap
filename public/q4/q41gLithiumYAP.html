@@ -146,13 +146,29 @@
             event.preventDefault(); //prevents page refresh
 
             if(confirm("Do you want to add this movie?")){ //confirm window with user first before submitting, if yes, execute code
-                movList.push({ //add an object containing movie info to the array
+                let newMovie = {
                     //assign all info about the movie received from the form to key:value pairs within the object
                     title: movtitle.value,
                     year: movyear.value,
                     genre: genre.value,
                     rating: ratingValue()
-                });
+                }
+                let hasEqual = false;
+                for(let movdex = 0; movdex < movList.length; movdex++){
+                    if(newMovie.title == movList[movdex].title){
+                        hasEqual = true;
+                        movList[movdex] = {
+                            title: movList[movdex].title,
+                            year: newMovie.year,
+                            genre: newMovie.genre,
+                            rating: newMovie.rating
+                        }
+                    }
+                }
+                if(!hasEqual){
+                    movList.push(newMovie);
+                }
+
 
                 localStorage.setItem("allMovies", JSON.stringify(movList) /*stringify array to be stored in localStorage*/); 
                 displayMovs(movList); //update the movie list
