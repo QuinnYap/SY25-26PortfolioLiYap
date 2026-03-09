@@ -52,9 +52,19 @@
         label{
             font-size:3rem;
         }
-        .star:has(input:checked),
-        .star:has(~ .star input:checked){
+        .star:has(input:checked), /*if the star is checked*/
+        .star:has(~ .star input:checked){ /*if the star has succeeding siblings that are checked*/
             color: gold;
+        }
+        span.starry{
+            color:gold;
+        }
+        p.movies{
+            background-color:var(--bleu-de-france);
+            color:var(--thistle);
+            padding:10px;
+            border:2px solid var(--thistle);
+            border-radius:10px;
         }
     </style>
 
@@ -114,31 +124,72 @@
     </article>
 
     <script>
+
+        //function to get value of rating from the radio buttons
+        function ratingValue(){ 
+            let starvalues = document.getElementsByName("movieStars") //loops through group of radio buttons
+            for(let i=0; i < starvalues.length; i++){
+                if(starvalues[i].checked){
+                    return starvalues[i].value; //gets value of the radio button if checked
+                }
+            }
+        }
+
         movList = JSON.parse(localStorage.getItem("allMovies")) || [];
+        //get existing movie list from localStorage OR start with empty array which will hold the movies
+
         displayMovs(movList);
+        //display the list of movies
 
-        const form = document.querySelector("form");
+        const form = document.querySelector("form"); //get all information from the form
         form.addEventListener("submit", function(event){
-            event.preventDefault();
+            event.preventDefault(); //prevents page refresh
 
-            if(confirm("Do you want to add this movie?")){
-                movList.push({
+            if(confirm("Do you want to add this movie?")){ //confirm window with user first before submitting, if yes, execute code
+                movList.push({ //add an object containing movie info to the array
+                    //assign all info about the movie received from the form to key:value pairs within the object
                     title: movtitle.value,
                     year: movyear.value,
                     genre: genre.value,
-                    rating: movieStars.value
+                    rating: ratingValue()
                 });
 
-                localStorage.setItem("allMovies", JSON.stringify(movList));
-                displayMovs(movList);
+                localStorage.setItem("allMovies", JSON.stringify(movList) /*stringify array to be stored in localStorage*/); 
+                displayMovs(movList); //update the movie list
             }
         });
 
         function displayMovs(listLaMovs){
-            
+            let displayMov = ""; //initial string to be innerHTML-ed to the list
+            for(let movie=0; movie < listLaMovs.length; movie++){
+                console.log(listLaMovs[movie].rating);
+                switch(listLaMovs[movie].rating){
+                    case "1":
+                        dispRate = "⭐";
+                        break;
+                    case "2":
+                        dispRate = "⭐⭐";
+                        break;
+                    case "3":
+                        dispRate = "⭐⭐⭐";
+                        break;
+                    case "4": 
+                        dispRate = "⭐⭐⭐⭐";
+                        break;
+                    case "5":
+                        dispRate = "⭐⭐⭐⭐⭐"
+                        break;
+                    default:
+                        dispRate = "No rating found"
+                }
+                displayMov += `<p class="movies">${listLaMovs[movie].title} 
+                (${listLaMovs[movie].year}) - ${listLaMovs[movie].genre}, Rating: <span class="starry">${dispRate}</span></p>`
+            }
+            movielist.innerHTML = displayMov;
         }
 
-        let starvalue = document.getElementsByName()
+        // localStorage.clear(); to clear test cases from this computer
+
     </script>
     </body>
 
