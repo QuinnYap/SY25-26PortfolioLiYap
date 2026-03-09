@@ -153,11 +153,12 @@
                     genre: genre.value,
                     rating: ratingValue()
                 }
-                let hasEqual = false;
-                for(let movdex = 0; movdex < movList.length; movdex++){
+                let hasEqual = false; //set value for if new movie is equal to any other movie
+                for(let movdex = 0; movdex < movList.length; movdex++){ //loop through movie list
                     if(newMovie.title == movList[movdex].title){
                         hasEqual = true;
                         movList[movdex] = {
+                            //update information
                             title: movList[movdex].title,
                             year: newMovie.year,
                             genre: newMovie.genre,
@@ -166,7 +167,7 @@
                     }
                 }
                 if(!hasEqual){
-                    movList.push(newMovie);
+                    movList.push(newMovie); //push new movie if is not equal to anything
                 }
 
 
