@@ -6,7 +6,7 @@
         <meta name = "author" content="YAP, Quinn Mikayela C.">
         <meta name = "description" content = "4Q 1st Graded">
         <meta name = "keywords" content = "4Q, 1st Graded, Projects, Web Development">
-        <title>Q4 1st Graded</title>
+        <title>Q4 1st and 2nd Graded</title>
         <link rel="stylesheet" href="../../stylesheets/YapPortfolioStyles.css">
         <link rel="icon" href="../../asset/BadgeOriginalDefinition.png">
 
@@ -158,7 +158,6 @@
                     if(newMovie.title == movList[movdex].title){
                         hasEqual = true;
                         movList[movdex] = {
-                            //update information
                             title: movList[movdex].title,
                             year: newMovie.year,
                             genre: newMovie.genre,
@@ -167,7 +166,7 @@
                     }
                 }
                 if(!hasEqual){
-                    movList.push(newMovie); //push new movie if is not equal to anything
+                    movList.push(newMovie);
                 }
 
 
@@ -200,9 +199,14 @@
                         dispRate = "No rating found"
                 }
                 displayMov += `<p class="movies">${listLaMovs[movie].title} 
-                (${listLaMovs[movie].year}) - ${listLaMovs[movie].genre}, Rating: <span class="starry">${dispRate}</span></p>`
+                (${listLaMovs[movie].year}) - ${listLaMovs[movie].genre}, Rating: <span class="starry">${dispRate}</span> 
+                <button onclick="deleteMov(${listLaMovs[movie]})">Delete</button></p>`
             }
             movielist.innerHTML = displayMov;
+        }
+
+        function deleteMov(obj){
+
         }
 
         // localStorage.clear(); to clear test cases from this computer
