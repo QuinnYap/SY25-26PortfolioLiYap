@@ -146,27 +146,35 @@
             event.preventDefault(); //prevents page refresh
 
             if(confirm("Do you want to add this movie?")){ //confirm window with user first before submitting, if yes, execute code
+                localStorage.setItem("newRating", ratingValue());
                 let newMovie = {
                     //assign all info about the movie received from the form to key:value pairs within the object
                     title: movtitle.value,
                     year: movyear.value,
                     genre: genre.value,
-                    rating: ratingValue()
+                    rating: localStorage.getItem("newRating")
                 }
                 let hasEqual = false; //set value for if new movie is equal to any other movie
                 for(let movdex = 0; movdex < movList.length; movdex++){ //loop through movie list
                     if(newMovie.title == movList[movdex].title){
                         hasEqual = true;
+                        totalRatings = (Number(newMovie.rating) + Number(localStorage.getItem("rating")));
+                        aveRating = totalRatings/2;
+                        newRating = aveRating.toFixed(0);
                         movList[movdex] = {
                             title: movList[movdex].title,
                             year: newMovie.year,
                             genre: newMovie.genre,
-                            rating: newMovie.rating
                         }
+                        movList[movdex].rating = newRating;
+                        console.log(localStorage.getItem("rating"))
+                        console.log(totalRatings);
+                        localStorage.setItem("rating", newRating);
                     }
                 }
                 if(!hasEqual){
                     movList.push(newMovie);
+                    localStorage.setItem("rating", newMovie.rating);
                 }
 
 
@@ -178,26 +186,16 @@
         function displayMovs(listLaMovs){
             let displayMov = ""; //initial string to be innerHTML-ed to the list
             for(let movie=0; movie < listLaMovs.length; movie++){
-                console.log(listLaMovs[movie].rating);
-                switch(listLaMovs[movie].rating){
-                    case "1":
-                        dispRate = "⭐";
-                        break;
-                    case "2":
-                        dispRate = "⭐⭐";
-                        break;
-                    case "3":
-                        dispRate = "⭐⭐⭐";
-                        break;
-                    case "4": 
-                        dispRate = "⭐⭐⭐⭐";
-                        break;
-                    case "5":
-                        dispRate = "⭐⭐⭐⭐⭐"
-                        break;
-                    default:
-                        dispRate = "No rating found"
+                let dispRate = "";
+                if(listLaMovs[movie].rating == 0){
+                    disprate = "No rating found";
                 }
+                else{
+                    for(let rating = 1; rating <= listLaMovs[movie].rating; rating++){
+                        dispRate += "⭐";
+                    }
+                }
+
                 displayMov += `<p class="movies">${listLaMovs[movie].title} 
                 (${listLaMovs[movie].year}) - ${listLaMovs[movie].genre}, Rating: <span class="starry">${dispRate}</span> 
                 <button onclick="deleteMov(${listLaMovs[movie]})">Delete</button></p>`
