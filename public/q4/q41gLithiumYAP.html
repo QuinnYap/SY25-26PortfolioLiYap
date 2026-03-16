@@ -198,15 +198,13 @@
 
                 displayMov += `<p class="movies">${listLaMovs[movie].title} 
                 (${listLaMovs[movie].year}) - ${listLaMovs[movie].genre}, Rating: <span class="starry">${dispRate}</span> 
-                <button onclick="deleteMov(${movie})">Delete</button></p>`
+                <button onclick="deleteMov(${listLaMovs[movie]})">Delete</button></p>`
             }
             movielist.innerHTML = displayMov;
         }
 
-        function deleteMov(movieDex){
-            let movieArr = JSON.parse(localStorage.getItem("allMovies"));
-            movieArr.splice(movieDex, 1);
-            displayMovs(movieArr);
+        function deleteMov(obj){
+
         }
 
         // localStorage.clear(); to clear test cases from this computer
