@@ -135,7 +135,12 @@
             }
         }
 
-        movList = JSON.parse(localStorage.getItem("allMovies")) || [];
+        if(JSON.parse(localStorage.getItem("allMovies"))){
+            let movList = JSON.parse(localStorage.getItem("allMovies"))
+        }
+        else{
+            let movList = [];
+        };
         //get existing movie list from localStorage OR start with empty array which will hold the movies
 
         displayMovs(movList);
@@ -198,16 +203,21 @@
 
                 displayMov += `<p class="movies">${listLaMovs[movie].title} 
                 (${listLaMovs[movie].year}) - ${listLaMovs[movie].genre}, Rating: <span class="starry">${dispRate}</span> 
-                <button onclick="deleteMov(${listLaMovs[movie]})">Delete</button></p>`
+                <button onclick="deleteMov(${movie})">Delete</button></p>`
             }
             movielist.innerHTML = displayMov;
         }
 
-        function deleteMov(obj){
+        function deleteMov(movieDex){
+            let index = Number(movieDex);
+            let movieLis = JSON.parse(localStorage.getItem("allMovies"));
+            movieLis.splice(index, 1);
+            localStorage.setItem("allMovies", movieLis);
+            displayMovs(movieLis);
 
         }
 
-        // localStorage.clear(); to clear test cases from this computer
+        //localStorage.clear(); to clear test cases from this computer
 
     </script>
     </body>
