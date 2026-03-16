@@ -78,7 +78,7 @@
         }
 
         function deleteMov(index){
-            movList.splice(index);
+            movList.splice(index, 1);
             localStorage.setItem("allMovies", JSON.stringify(movList));
             displayMovs(movList);
         }
