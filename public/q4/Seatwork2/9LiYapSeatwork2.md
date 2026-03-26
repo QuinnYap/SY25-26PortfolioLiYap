@@ -106,10 +106,13 @@
     > - Static is the default positioning where all elements are put into the normal flow of elements in HTML.
     > - Relative allows you to position the element relative to its normal position in the HTML element flow.
     > - Absolute positions the element relative to either its container if the container has a positioning property applied to it, or the body, if it isn't in a container with positioning property.
-    > - 
+    > - Fixed positions the element at a fixed place on the viewport, so that when you scroll it stays on the same position.
     
     b. How does absolute positioning depend on its parent element?
+    > If its parent element has a positioning property applied to it, it will be positioned relative to that parent. If it doesn't, it will be positioned relative to the ```<body>``` tag.
 
     c. How do you differentiate sticky from fixed (you can research on sticky)?
+    > Sticky stays at a position relative to its normal position in the HTML element flow until you scroll, in which it will display a fixed behavior (it stays at the top or bottom of the page when scrolling). Fixed just puts the element in a fixed position, so it doesn't move when you scroll regardless of where you are.
 
     d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
+    > I can use z-indexes to put important reminders on top of content boxes when there are important dates or events to remember. I can also use it to arrange a sidebar and a main content part for it so that people can see important notes about the event, etc.
