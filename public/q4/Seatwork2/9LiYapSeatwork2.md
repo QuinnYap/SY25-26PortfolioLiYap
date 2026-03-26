@@ -56,12 +56,14 @@
 - Add in css ```position: relative; top: 20px; left: 20px;``` to .sidebar.
 
 - Guided Question: What changed compared to the default static positioning? Try to give different values to top and left or you can change it to bottom, right.
+>The sidebar moved 20px down and 20px to the right when these styles were applied. When changing the values for top, the sidebar moves down a little more, and for left, the sidebar moves to the right. When changed to bottom, right, the movement of the sidebar is now 20px up and 20px left. In static positioning, the sidebar is just in the normal flow of elements in the HTML page, while in relative positioning, the position of the element relative to its normal position can be changed.
 
 ### Step 2 (Fixed):
 
 - Add in css ```position: fixed; bottom: 0; width: 100%;``` to .footer.
 
 - Guided Question: What happens when you scroll the page? Why does the footer behave differently from position relative?
+>When I scroll on the page, the footer stays at the bottom. It behaves differently from position: relative because the positioning of the object is not relative to its normal position, but it is instead at a fixed position at the bottom.
 
 ### Step 3 (Absolute):
 
