@@ -70,6 +70,7 @@
 - Add in css ```position: absolute; top: 66px; left: 200px;``` to .content.
 
 - Guided Question: What is the effect of position: absolute on an element? How is it different from fixed?
+>The position: absolute CSS styling positions the object relative to the body (or its nearest positioned ancestor) rather than being fixed on the viewport at a specific location in position: fixed. 
 
 ### Step 4 : (Absolute)
 
@@ -89,16 +90,24 @@
 - Give .content a z-index: 1.
 
 - Guided Question: Why does the notice appear on top of the content? What happens if you swap the z‑index values?
+>The notice appears on top of the content because it has a higher z-index value. If you swap the z-index values, the content will be on top of the notice.
 
 - Challenge: 
-    * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).
+    * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? 
+    >I have to put the div of the notice within the main content so that its positioning stays within the main content div. Then, I will set top: 0 and right: 0 to get it to display at the top right corner.
     * Try to change the position of .content to relative then to fixed. What do you observed each time?
+    >When changed to relative, the main content is positioned relative to its normal position at position: static, which is below the sidebar. When changed to fixed, the main content stays fixed on the page as I scroll.
     * What do you observe on about the effect of z-index on .notice and .content boxes?
+    >When the z-index of the content box is higher, the content box appears on top of the notice. When the z-index of the notice is higher, then the notice appears on top of the content box. When you have two overlapping elements, the element with the bigger z-index is placed on top of the other one.
 
 3. Please answer the following reflection questions (15 minutes)
 
     a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)? 
-
+    > - Static is the default positioning where all elements are put into the normal flow of elements in HTML.
+    > - Relative allows you to position the element relative to its normal position in the HTML element flow.
+    > - Absolute positions the element relative to either its container if the container has a positioning property applied to it, or the body, if it isn't in a container with positioning property.
+    > - 
+    
     b. How does absolute positioning depend on its parent element?
 
     c. How do you differentiate sticky from fixed (you can research on sticky)?
