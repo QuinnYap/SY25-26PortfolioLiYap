@@ -48,7 +48,6 @@ nav a :hover {
     border: 1px solid black;
 }
 .point {
-  
     height: 10px;
     width: 10px;
     background-color: red;
@@ -89,7 +88,7 @@ footer a {
     width: 32px;
     height: 32px;
     display: inline-block;
-    background-image: url('sprites.png') no-repeat;
+    background: url('sprites.png') no-repeat;
 }
 .facebook {
     background-position: -226px -129px;
